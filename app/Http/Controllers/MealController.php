@@ -9,6 +9,12 @@ use App\Models\FavoriteMeal;
 class MealController extends Controller
 {
     
+    public function getUserRole(Request $request)
+    {
+        $user = Auth::user();
+        return response()->json(['role' => $user->role]);
+    }
+
     public function index()
     {
         $meals = Meal::all();
@@ -26,7 +32,8 @@ class MealController extends Controller
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'image' => $request->input('image'),
-            'user_id' => $user->id, 
+            'user_id' => $user->id,
+            'SousCategorieID' => $request->input('SousCategorieID') //add this ligne
         ]);
     
        

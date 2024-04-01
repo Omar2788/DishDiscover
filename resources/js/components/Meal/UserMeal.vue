@@ -2,8 +2,8 @@
   <Sidebar />
   <div>
     <div class="headUserMeals">
-      <h4>Your Added Meals</h4>
-      <p>These are the meals you've added. Explore, edit, or delete them as needed. Don't forget to check out our favorite meals section for some inspiration!</p>
+      <h4>Vos Publications.</h4>
+      <p>Ce sont les publications que vous avez publier, Explorez-les, modifiez-les ou supprimez-les selon vos besoins. </p>
     </div>
       <div class="row" v-if="userMeals.length > 0">
           <div class="col-md-6" v-for="meal in userMeals" :key="meal.id">
@@ -14,11 +14,8 @@
                       margin-bottom: 1rem;
                       margin-left: auto;
                       margin-right: auto;
-                      height: 650px;">
-                  <template #header>
-                      <img
-                          :src="meal.image" :alt="meal.title" class="shadow-4 imagemeal" style="width: 100%; max-height: 280px"/>
-                  </template>
+                      height: 450px;">
+                  
                   <template #title>{{ meal.title }}</template>
                   <template #content>
                       <p class="m-0">{{ meal.description }}</p>
@@ -31,8 +28,8 @@
                       <i class="bi bi-trash delete-icon"
                           @click="deleteMeal(meal.id)"></i>
                       <hr>
-                      <div class="created-at"><i class="bi bi-calendar3"></i> Created at : {{ formatDate(meal.created_at) }}</div>
-                  <div class="updated-at"><i class="bi bi-arrow-repeat update-icon"></i> Updated at : {{ formatDate(meal.updated_at) }}</div>
+                      <div class="created-at"><i class="bi bi-calendar3"></i> Créé à : {{ formatDate(meal.created_at) }}</div>
+                  <div class="updated-at"><i class="bi bi-arrow-repeat update-icon"></i> Modifié à : {{ formatDate(meal.updated_at) }}</div>
                   </template>
               </Card>
           </div>
@@ -45,7 +42,7 @@
      <div class="dialog">
         <div class="row">
           <div class="col-md-6">
-            <h4>Edit Meal</h4>
+            <h4>Modifier publication</h4>
           </div>
           
         </div>
@@ -53,16 +50,16 @@
           <form @submit.prevent="saveEditedMeal">
             <div class="row">
               <div class="col-md-6">
-                  <label for="editTitle">Meal Title :</label>
+                  <label for="editTitle">Titre de la publication :</label>
                   <br>
                   <input v-model="selectedMeal.title" type="text" id="editTitle" />
               </div></div>
               <div class="row">
               <div class="col-md-6">
-                  <label for="editDescription">Meal Description :</label>
+                  <label for="editDescription">Description de la publication :</label>
                   <textarea v-model="selectedMeal.description" id="editDescription" class="large-textarea"></textarea>
               </div></div>
-              <div class="row">
+             <!--  <div class="row">
                 <span>You can insert new picture to change the Meal picture :</span>
             <file-pond
               name="mealImage"
@@ -75,7 +72,7 @@
               v-on:init="handleFilePondInit"
               :server="serverOptions()"
             />
-          </div>
+          </div> -->
             <hr>
               <div class="col-md-6">
                   <Button type="button" label="Cancel" @click="cancelEdit" class="p-button-secondary" />
@@ -140,10 +137,10 @@ const deleteMeal = async (id) => {
 
       await toast.add({
           severity: "success",
-          summary: "Meal deleted successfully",
+          summary: "Publication supprimée avec succès",
           life: 5000,
       });
-      console.log("Meal deleted successfully");
+      console.log("Publication deleted successfully");
       getUserMeals();
   } catch (error) {
       console.error(error);
@@ -162,11 +159,11 @@ const saveEditedMeal = async () => {
 
           await toast.add({
               severity: "success",
-              summary: "Meal updated successfully",
+              summary: "Publication modifiée avec succès",
               life: 5000,
           });
 
-          console.log("Meal updated successfully");
+          console.log("Publication updated successfully");
           getUserMeals();
           isEditDialogVisible.value = false;
        
@@ -299,7 +296,7 @@ width: 200%;
   color: rgb(59, 0, 59);
   font-size: 1.5rem;
   cursor: pointer;
-  border-bottom: 2px solid rgb(173, 1, 173);
+  border-bottom: 2px solid #019176;
 
 }
 </style>

@@ -8,6 +8,7 @@ import Sidebar from "./components/sidebar/Sidebar.vue"
 import UserMeal from "./components/Meal/UserMeal.vue"
 import FavoriteMeals from "./components/Meal/FavoriteMeals.vue"
 import MealDetails from "./components/Meal/MealDetails.vue"
+import Profile from "./components/auth/Profile.vue"
 export const routes=[
   
     // {
@@ -61,6 +62,11 @@ export const routes=[
             component: MealDetails,
             meta: { isAuth: true },
           },
-   
+          {
+            name:"profile",
+            path:"/profile",
+            component:Profile,
+            meta: { isAuth: true },
+          }
 
 ]

@@ -59,13 +59,15 @@ const toast = useToast();
     try {
       const response = await axios.post('http://localhost:8000/api/login/', user);
       console.log(response);
-      router.push("/home");
-      localStorage.setItem('user', response.data.user.name);
+      localStorage.setItem('registeredUser', JSON.stringify(response.data.user));
+     // localStorage.setItem('user', response.data.user.name);
       localStorage.setItem('token', response.data.token);
+      localStorage.setItem('role', response.data.user.role);
+      router.push("/home");
       toast.add({
         severity: "success",
         summary: "Login Successful",
-        detail: "Welcome to Meal App",
+        detail: "Bienvenue!",
         life: 3000,
       });
     } catch (error) {
