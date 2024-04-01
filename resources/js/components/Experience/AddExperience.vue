@@ -5,7 +5,7 @@
         <span style="color: rgb(43, 27, 27)">
           <i class="bi bi-plus-circle" style="color: white;" ></i>
         </span>
-        Ajouter publication
+        Ajouter Experience
       </button>
       <form>
        
@@ -13,28 +13,28 @@
             <div class="dialog">
             <div class="row">
               <div class="col-md-6">
-                <label for="title" class="form-label">Titre de la publication</label>
+                <label for="title" class="form-label">Titre de l'experience :</label>
                 <input type="text" class="form-control" id="title" v-model="meal.title" />
               </div>
               </div>
               <div class="row">
               <div class="col-md-6">
-                <label for="description" class="form-label">Description de la publication:</label>
+                <label for="description" class="form-label">Description de l'experience :</label>
                 <textarea type="text" class="form-control" id="description" v-model="meal.description" />
               </div>
             </div>
-         <!--    <div class="row">
+            <div class="row">
               <file-pond
                 name="mealImage"
                 ref="pond"
                 class-name="my-pond"
-                label-idle="Add Meal picture here..."
+                label-idle="Ajouter une image ici..."
                 allow-multiple="false"
                 accepted-file-types="image/jpeg, image/png"
                 v-bind:files="myFiles"
                 :server="serverOptions()"
               />
-            </div> -->
+            </div>
             <hr>
             <br />
             <button type="submit" class="btn btn-outline-primary" @click="addMeal">
@@ -78,7 +78,7 @@
     });
    
     location.reload();
-    console.log("Publication ajoutée avec succès");
+    console.log("Meal added successfully");
     visible.value = false;
   } catch (error) {
     console.log(error);
@@ -131,13 +131,12 @@
 }
 button {
   float: right;
-  background-color: #019176;
+  background-color: rgb(141, 147, 187);
   color: white;
-  border-color: #019176;
-  font-weight: 500;
+  border-color: rgb(141, 147, 187);
 }
 button:hover {
-  background-color: #005041;
+  background-color: rgb(64, 74, 138);
   color: white;
   border-color: rgb(141, 147, 187);
 }

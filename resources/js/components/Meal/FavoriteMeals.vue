@@ -3,26 +3,27 @@
     <Sidebar />
     <div>
       <div class="headFavorite">
-      <h4>Your Favorite Meals</h4>
-      <p>Explore the delicious meals you've saved as favorites. Click on the meal cards to view more details or remove them from your favorites list.</p>
+      <h4>Vous trouvez ici les publications recommandés</h4>
+      <p>Veuillez consulter les publications ci-dessous pour des recommandations.</p>
+
     </div>
       <div class="row">
         <div class="col-md-6" v-for="favoriteMeal in favoriteMeals" :key="favoriteMeal.id">
-          <Card class="card" style="width: 30em; margin-bottom: 1rem; margin-left: auto; margin-right: auto;height: 600px;">
-            <template #header>
+          <Card class="card" style="width: 30em; margin-bottom: 1rem; margin-left: auto; margin-right: auto;height: 450px;">
+           <!--  <template #header>
               <img :src="favoriteMeal.meal.image" :alt="favoriteMeal.meal.title" class="shadow-4 imagemeal" style="width: 100%; max-height: 280px;" />
-            </template>
+            </template> -->
             <template #title>{{ favoriteMeal.meal.title }}</template>
             <template #content>
               <p class="m-0">{{ favoriteMeal.meal.description }}</p>
             </template>
-            <template #footer>
+            <!-- <template #footer>
               <hr>
               <i class="bi bi-trash3 rmvfrmfav" @click="removeFromFavorites(favoriteMeal.meal.id)"></i> Remove from Favorites
               <div class="subtitle">Added on : {{ formatDate(favoriteMeal.created_at) }}</div>
               <i class="bi bi-clock"></i> {{ formatTime(favoriteMeal.created_at) }}
 
-            </template>
+            </template> -->
           </Card>
         </div>
       </div>

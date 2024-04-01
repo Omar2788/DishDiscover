@@ -6,7 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\MealController;
 use App\Http\Controllers\CommentController;
-
+use App\Http\Controllers\ProfileController;
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -23,6 +23,16 @@ Route::get('/meal/{id}', [MealController::class,'showMeal']);
 Route::post('/comments', [CommentController::class, 'addComment']);
 Route::get('/comments/{mealId}', [CommentController::class, 'getComments']);
 Route::resource('meal', MealController::class);
+Route::put('/profile', [ProfileController::class, 'update']);
+Route::middleware('auth:sanctum')->put('/profile', [ProfileController::class, 'update']);
+
+//oumaima work : 
+Route::resource('categories', CategorieController::class);
+Route::resource('scategories', SousCategorieController::class);
+Route::resource('posts', PostController::class);
+// end of oumaima work     
+
+Route::middleware('auth:sanctum')->get('/userRole', [MealController::class, 'getUserRole']);
 Route::middleware('auth:sanctum')->post('/meal', [MealController::class, 'store']);
 Route::middleware('auth:sanctum')->get('/userMeal', [MealController::class, 'usersMeal']);
 Route::middleware('auth:sanctum')->post('/favoritemeals', [MealController::class, 'addToFavorite']);

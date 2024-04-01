@@ -14,12 +14,21 @@ class RegisterController extends Controller
     $request->validate([
     'name' => 'required',
     'email' => 'required|email|unique:users,email',
-    'password' => 'required|min:6'
+    'password' => 'required|min:6',
+    'selectedItems' => 'required|array',
+    'adresse' => 'required',
+    'telephone' => 'required',
     ]);
+
+    $selectedItems = json_encode($request->input('selectedItems', [])); // Convert array to JSON string
+
     $user = User::create([
     'name' => $request->name,
     'email' => $request->email,
     'password' => Hash::make($request->password),
+    'selected_items' => $selectedItems,
+    'adresse' => $request->adresse,
+    'telephone' => $request->telephone,
     ]);
     $token = $user->createToken('token-name')->plainTextToken;
 return response()->json([

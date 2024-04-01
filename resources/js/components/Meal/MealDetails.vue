@@ -3,19 +3,22 @@
     <div class="meal-details-container">
       <div class="meal-info">
         <h2 style="color: rgb(5, 61, 0);">{{ meal.title }}</h2>
-        <img :src="meal.image" :alt="meal.title" class="meal-image" />
-        <h5 style="color: rgb(5, 61, 0);">Meal description :</h5>
+        
+        <h5 style="color: rgb(5, 61, 0);">Description :</h5>
         <p>{{ meal.description }}</p>
-        <p><strong style="color: rgb(5, 61, 0);"><i class="bi bi-calendar3" style="color: rgb(74, 53, 150);"></i> Created At :</strong> {{ formatDate(meal.created_at) }} {{ formatTime(meal.created_at) }}</p>
+        <p><strong style="color: rgb(5, 61, 0);"><i class="bi bi-calendar3" style="color: rgb(74, 53, 150);"></i> Créé à :</strong> {{ formatDate(meal.created_at) }} {{ formatTime(meal.created_at) }}</p>
         <!-- Add other details as needed -->
       </div>
   
       <div class="comments-section">
-      <h4>The Comments that this meal have :</h4>
+      <h4>Les commentaires de cette publication :</h4>
       <div class="comments-list" v-if="comments.length > 0">
         <ul>
           <li v-for="comment in comments" :key="comment.id">
-            <strong style="color: rgb(136, 88, 0);">{{ comment.user.name.toUpperCase() }} </strong> <strong>:</strong> <span style="color: black;font-weight: 500;"> {{ comment.text }}</span>
+            <!--<strong style="color: rgb(136, 88, 0);">{{ comment.user.name.toUpperCase() }} </strong> <strong>:</strong> <span style="color: black;font-weight: 500;"> {{ comment.text }}</span> -->
+         
+          <strong style="color: rgb(136, 88, 0);">{{ comment.user.role === 'admin' ? 'AUTEUR' : 'ANONYME' }}</strong> <strong>:</strong> <span style="color: black;font-weight: 500;"> {{ comment.text }}</span>
+
             <br>
             <small><i class="bi bi-calendar3" style="color: rgb(74, 53, 150);"></i> {{ formatDate(comment.created_at) }} {{ formatTime(comment.created_at) }}</small>
 
@@ -23,13 +26,13 @@
         </ul>
       </div>
       <div v-else>
-        <p>No comments yet.</p>
+        <p>Aucun commentaire pour l'instant.</p>
       </div>
 
         <div class="add-comment">
-          <h6>Add a comment and give your opinion :</h6>
-          <textarea v-model="newComment" rows="4" placeholder="Enter your comment..."></textarea>
-          <button @click="addComment">Add Comment</button>
+          <h6>Ajoutez un commentaire et donnez votre avis :</h6>
+          <textarea v-model="newComment" rows="4" placeholder="Entrez votre commentaire..."></textarea>
+          <button @click="addComment">Ajouter</button>
         </div>
       </div>
     </div>
